@@ -118,8 +118,8 @@
   <h5>Intensity</h5>
   <p>Controls how much PITCH BLACK darkens the affected area.</p>
   <ul>
-  <li>0: PITCH BLACK has no effect</li>
-  <li>1: PITCH BLACK fades to absolute darkness</li>
+    <li>0: PITCH BLACK has no effect</li>
+    <li>1: PITCH BLACK fades to absolute darkness</li>
   </ul>
 
   <h4>Extents</h4>
@@ -163,18 +163,18 @@
   <p>Translucent materials behave unintuitively with PITCH BLACK. The Showcase level demonstrates this.</p>
   <p>The two material properties which affect how they interact with PITCH BLACK are:</p>
   <ul>
-  <li>“Output Depth and Velocity”</li>
-  <li>Translucency Pass, either “Before DOF” or “After DOF”/”After Motion Blur”</li>
+    <li>“Output Depth and Velocity”</li>
+    <li>Translucency Pass, either “Before DOF” or “After DOF”/”After Motion Blur”</li>
   </ul>
   <p>Translucent materials with “Output Depth and Velocity” enabled will receive darkness if inside the mask. But they pick up undarkened light from undarkened faces of those materials will also transmit light from surfaces behind them that would otherwise be darkened.</p>
   <ul>
-  <li>Before DOF: Receive full darkness. This is a good default setting.</li>
-  <li>After DOF: Receive only partial darkness.</li>
+    <li>Before DOF: Receive full darkness. This is a good default setting.</li>
+    <li>After DOF: Receive only partial darkness.</li>
   </ul>
   <p>Translucent materials with “Output Depth and Velocity” disabled allow opaque surfaces behind them to receive correct darkness.</p>
   <ul>
-  <li>Before DOF: Receive darkness based on the location of the next opaque surface</li>
-  <li>After DOF: Receive no darkness.</li>
+    <li>Before DOF: Receive darkness based on the location of the next opaque surface</li>
+    <li>After DOF: Receive no darkness.</li>
   </ul>
 
   <h4>Reflection</h4>
@@ -185,9 +185,7 @@
 
   <h4>Using a different color </h4>
   <img class="image" src="images/pitchblack/5.png"/>
-  <p>Open the material of your choice (M_PP_PitchBlack_Box or M_PP_PitchBlack_Ellipsoid).</p>
-
-  <p>Add these highlighted nodes at the end:</p>
+  <p>Open the material of your choice (M_PP_PitchBlack_Box or M_PP_PitchBlack_Ellipsoid). Add these highlighted nodes at the end:</p>
   <img class="image" src="images/pitchblack/6.png"/>
 
 </div></section>
@@ -251,16 +249,16 @@
     <h4>Exotic Stylized Color Grading</h4>
   </header>
   
-  <p>CHROMIA remaps your scene's colors to create unique stylized looks. Design bold, opinionated looks for making your creations stand out.</p>
+  <p>CHROMIA remaps your scene's colors to create unique styles. Design bold, opinionated looks that make your creations stand out.</p>
   
-  <h3>CHROMIA features</h3>
+  <h3>Features</h3>
   
   <h4>Tricolor Palettizer</h4>
   <p>Choose a tricolor visual identity and shape your image around it. Shift colors towards your palette, or emphasize colors that already match it.</p>
   <img class="image" src="images/chromia/tricolor.png"/>
   
   <h4>Smart Color Curves</h4>
-  <p>CHROMIA lets you make sweeping changes to your hue, saturation, and brightness, while preserving the maximum dynamic range of those values. CHROMIA uses the Oklab perceptual color space to create smooth color gradients you won't get elsewhere</p>
+  <p>Make sweeping changes to your hue, saturation, and brightness, while preserving the maximum dynamic range of those values. CHROMIA uses the Oklab perceptual color space to create smooth color gradients you won't get elsewhere.</p>
   <img class="image" src="images/chromia/curves.png"/>
   
   <h4>Exotic color correlations</h4>
@@ -272,23 +270,23 @@
   <p>Unreal only applies in LUTs Standard Dynamic Range, reducing your color depth. CHROMIA grades High Dynamic Range colors, preserving details for you.</p>
   
   <h4>Plays nicely with Unreal's color grading</h4>
-  <p>You don't have to give up anything to use CHROMIA! You can still use Unreal's color grading tools if you want. Chromia applies its changes first, and you can fine-tune them in your post process settings.</p>
+  <p>You don't have to give up anything to use CHROMIA! You can still use Unreal's color grading tools if you want. CHROMIA applies its changes first, and you can fine-tune them in your post process settings.</p>
   
   <h3>Getting started</h3>
   <p>Use the Epic Games Launcher to add the CHROMIA asset pack to your Unreal Engine project.</p>
 
   <h4>Try the Showcase level</h4>
   <p>The Showcase level lets you try out CHROMIA's presets.</p>
-  <p>To see it, open your project. Browse to Content/ChromiaColorGrader/Showcase/ and open the Overview level. Play this level in your editor. Press HOME, END, or 0-9 to cycle through presets</p>
+  <p>To see it, open your project. Browse to Content/ChromiaColorGrader/Showcase/ and open the Overview level. Play this level in your editor. Press HOME, END, or 0-9 to cycle through presets.</p>
   
   <h4>Add CHROMIA to your level</h4>
-  <p>Chromia is a post process material. Here's how to add Chromia (or any other post process material) to your level:</p>
+  <p>CHROMIA is a post process material. Here's how to add CHROMIA (or any other post process material) to your level:</p>
   <p>Open your level. Create a Post Process Volume actor. Enable "Infinite Extent (Unbound)". Under "Rendering Features" look for "Post Process Materials". Click "(+) Add Element". Click on "Choose" and select "Asset Reference". This creates a slot labeled "Choose" where you'll drag a CHROMIA preset in the next step.</p>
   <p>In your Content Browser, open Content/ChromiaColorGrader/Presets. Drag one of the Material Instances into your Post Process Volume's list of post process materials. You should now see the CHROMIA preset transforming the appearance of your level.</p>
   
   <h3>Customize CHROMIA</h3>
-  <p>To start designing your own CHROMIA look, create a new Material Instance in Unreal's Content Browser. Open it, and set its Parent to Content/ChromiaColorGrader/M_Chromia. Drag your Material Instance into the Post Process Volume material array (like in the step above).</p>  
-  <p>Your scene should look the same as it did before. Chromia's default settings leave your image unchanged. Now we can start creating a visual style.</p>
+  <p>To start designing your own CHROMIA look, create a new Material Instance in Unreal's Content Browser. Open it, and set its Parent to Content/ChromiaColorGrader/M_CHROMIA. Drag your Material Instance into the Post Process Volume material array (like in the step above).</p>  
+  <p>Your scene should look the same as it did before. CHROMIA's default settings leave your image unchanged. Now we can start creating a visual style.</p>
   
   <h4>Create a tricolor palette</h4>
   <p>In your Material Instance, look for "Enable Color Palette". Click the checkbox on the left to allow your instance to override this setting. Then click the checkbox on the right to enable the color palette.</p>  
