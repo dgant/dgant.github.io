@@ -28,8 +28,9 @@
 					<!-- Nav -->
 						<nav id="nav">
 							<ul>
-								<li><a href="#pitchblack"     ><span class="icon fa-moon"           >PITCH BLACK</span></a></li>
-                <li><a href="#chromia"        ><span class="icon fa-television"     >CHROMIA</span></a></li>
+								<li><a href="#pitchblack"     >PITCH BLACK</a></li>
+                <li><a href="#chromia"        >CHROMIA</a></li>
+                <li><a href="#aberration"     >ENHANCED CHROMATIC ABERRATION</a></li>
                 <!--
 								<li><a href="#tunnelvision"   ><span class="icon fa-lightbulb"      >TUNNEL VISION</span></a></li>
                 <li><a href="#physicalmirage" ><span class="icon fa-thermometer-4"  >PHYSICAL MIRAGE</span></a></li>
@@ -313,6 +314,149 @@
   <p>If you have an outdoor scene, turn "Strength: Sky" up to 1.0. This will produce a rainbow gradient across the sky emanating from your primary directional light.</p>
   <p>Adjust "Fresnel Reduction" between negative and positive values to see the iridescence apply most strongly to surfaces angled towards, or away, from the camera.</p>
   <p>Lastly, boost "Link Brightness to Iridescence" to 1.0" and "Brightness Scale" to 2.0 to watch your iridescent surfaces shine extra-bright.</p>
+  
+</div></section>
+
+<section id="aberration" class="two"><div class="container">
+
+  <header>
+    <h2>ENHANCED CHROMATIC ABERRATION</h2>
+    <h4>High quality multisampled lens simulation</h4>
+  </header>
+  
+  <img class="image" src="images/aberration/logo.png"/>
+  
+  <p>ENHANCED CHROMATIC ABERRATION simulates the colorful refraction of a camera lens. Drop it your scene to instantly replace Unreal's simple three-color aberration with a juicy rainbow spectrum and powerful lens effects.</p>
+  <p>Create subtle edge enhancement or extreme mind-bending special effects. Control it via blueprint sliders, material instances, or keyframing. Or enhance your own materials with easy-to-use material functions.</p>
+  
+  <img class="image" src="images/aberration/subway.png"/>
+  
+  <h3>Add ENHANCED CHROMATIC ABERRATION to your level</h3>
+  Here are two easy ways to use ENHANCED CHROMATIC ABERRATION:
+  
+  <h4>Blueprint</h4>
+  <p>Drag BP_EnhancedChromaticAberration into your level. You'll see aberration immediately!</p>
+  <p>Control its appearance by dragging its sliders in the Details panel.</p>
+  
+  <h4>Material Instance</h4>
+  <p>Create a Material Instance. Open it and set its parent to M_PP_Aberration_Standalone.</p>
+  <p>Create a Post Process Volume actor. Enable "Infinite Extent (Unbound)". Under "Post Process Materials" add an array element, select "Asset Reference", then drag in your Material Instance. You should see aberration in the viewport.</p>
+  <p>You can now control the aberration by editing the sliders on your Material Instance.</p>
+  
+  <h3>Included Materials</h3>
+  <p>ENHANCED CHROMATIC ABERRATION ships with two base materials:</p>
+  <ul>
+  <li>M_PP_Aberration_Blueprint: For use by BP_EnhancedChromaticAberration. Gets settings from MPC_Aberration, which BP_EnhancedChromaticAberration modifies.
+  <li>M_PP_Aberration_Standalone: For adding to Post Process Volumes directly. Gets settings from material parameters that you can modify by creating a Material Instance.</li>
+  </ul>
+  <p>ENHANCED CHROMATIC ABERRATION also ships with two Material Instances for each of these:</p>
+  <ul>
+  <li>MI_PP_Aberration_Blueprint_HDR</li>
+  <li>MI_PP_Aberration_Blueprint_SDR</li>
+  <li>MI_PP_Aberration_Standalone_HDR</li>
+  <li>MI_PP_Aberration_Standalone_SDR</li>
+  </ul>
+  <p>The HDR versions aberrate during the High Dynamic Range stage of post processing, before tonemapping. The SDR versions, likewise, aberrate in the Standard Dynamic Range stage after tonemapping. The HDR versions will cause the aberrated colors to undergo tonemapping. Whether you want HDR or SDR aberration is up to your taste and preference.</p>
+  
+  <h3>Settings Reference</h3>
+  <p>These are the settings you can control on both BP_EnhancedChromaticAberration and standalone Material Instances:</p>
+  
+  <h4>Intensity</h4>
+  <p>The overall amount of chromatic aberration to apply.</p>
+  
+  <h4>Roundness</h4>
+  <p>Round aberration scales radially from the screen's center, emphasizing aberration in the corners.</p>
+  <p>Rectangular aberration scales horizontally/vertically from the screen's center, aberrating equidistantly from the screen edge.</p>
+  
+  <h4>Decay</h4>
+  <p>Controls rate of intensity decay towards the center of the image.</p>
+  <ul>
+  <li>Negative: Slower decay.</li>
+  <li>Positive: Faster decay.</li>
+  </ul>
+  
+  <h4>Distortion</h4>
+  <p>Distorts the lens shape.</p>
+  <ul>
+  <li>Negative values: Barrel/fisheye distortion.</li>
+  <li>Positive values: Pincushion distortion.</li>
+  </ul>
+  
+  <h4>Flattening</h4>
+  <p>Cuts off aberration towards the center of the lens.</p>
+  
+  <h4>Refraction Bias</h4>
+  <p>Directly aberrates the image in a fixed direction.</p>
+  
+  <h4>Lens Center</h4>
+  <p>Moves the center of the lens, from which aberration originates.</p>
+  
+  <h4>Spectrum Origin</h4>
+  <p>Aberration starts with this color towards the center of the lens, and proceeds through the spectrum at the Hue Shift Rate.</p>
+  
+  <h4>Hue Shift Rate</h4>
+  <p>Controls the direction and rate of color skew in aberration.</p>
+  <p>Values beyond -1 and 1 cause colors to be repeated.</p>  
+  
+  <h3>Blueprint Settings</h3>  
+  <img class="image" src="images/aberration/parametersblueprint.png"/>  
+  <p>These settings are exclusive to BP_EnhancedChromaticAberration:</p>
+  
+  <h4>Multisampling Quality</h4>
+  <p>Increases the quality of the aberration by taking more samples from the image.</p>
+  <p>One sample per pixel aberrated is sufficient for totally seamless aberration.</p>
+  <p>The slider only goes up to 100 to ensure reasonable editor framerates, but this can go up to 4096 for extreme high-quality 8k rendering.</p>
+  
+  <h4>Cinematic Quality</h4>
+  <p>Overrides Multisampling Quality during movie rendering only.</p>
+  <p>If 0 or below, defaults to using the Multisampling Quality value.</p>
+  
+  <h4>Update on Tick?</h4>
+  <p>Updates material parameters on each tick.</p>
+  <p>You will likely want to disable this for games and other real-time applications to spare a bit of performance.</p>
+  
+  <h4>Host Material?</h4>
+  <p>If enabled, spawns an unbound Post Process Volume with the Aberration Material on it.</p>
+  <p>Disable this if you want to manage the material yourself.</p>
+  
+  <h4>Material</h4>
+  <p>Which Aberration material to host, if Host Material is enabled. This should be a blueprint-controlled material, which reads parameters from MPC_Aberration, like one of these:</p>
+  <ul>
+  <li>MI_PP_Aberration_Blueprint_HDR</li>
+  <li>MI_PP_Aberration_Blueprint_SDR</li>
+  </ul>
+  
+  <h4>Apply Panini Settings</h4>
+  <p>Applies Unreal's Panini projection, allowing you to achieve crisp barrel/pincushion distortion without undersampling artifacts. This is a largely better way of acheiving lens distortion than the Distortion settings above. See Unreal's documentation for more information about Panini projection.</p>
+  
+  <h4>Panini Intensity</h4>
+  <p>Sets the strength of the Panini effect via the "D" parameter. Using 0 disables Panini projection.<p>
+  
+  <h4>Panini Shape</h4>
+  <p>Controls the shape of the Panini projection via the "S" parameter.</p>
+  <ul>
+  <li>0: Pincushion projection</li>
+  <li>1: Barrel/fisheye projection</li>
+  </ul>
+  
+  <h3>Standalone Material Settings</h3>
+  <p>These settings are exclusive to Material Instances based on M_PP_Aberration_Standalone:</p>
+  <img class="image" src="images/aberration/parametersstandalone.png"/>  
+  
+  <h4>Use Maximum Cinematic Quality</h4>
+  <p>Enables maximum quality, sampling aberration from every pixel individually. This will disable all other quality settings.</p>
+  
+  <h4>Use Scalability Settings</h4>
+  <p>Picks a quality level based on the Shading scalability setting.</p>
+  
+  <h4>Aberration Quality (Per Scalability/Scalability-Independent)</h4>
+  <p>Specifies the number of samples to take for the given scalability level. If "Use Scalability Settings" is disabled, defaults to "Aberration Quality (Scalability-Independent)"</p>
+  
+  <h3>Chromatic Aberrated Glass</h3>
+  <img class="image" src="images/aberration/glass.png"/>  
+  <p>Enhanced Chromatic Aberration also ships with the Chromatic Aberrated Glass material, demonstrated in Showcase_Glass.</p>
+  <p>It shares the aforementioned parameters, plus some basic PBR and fresnel parameters.</p>
+  <img class="image" src="images/aberration/parametersglass.png"/>
   
 </div></section>
 
